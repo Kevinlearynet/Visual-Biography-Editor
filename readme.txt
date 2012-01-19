@@ -3,7 +3,7 @@ Contributors: kevinlearynet
 Tags: profile, biography, bio, rich, text, editor, wysiwyg, tinymce, wpeditor, visual, editor, biographic, info
 Requires at least: 3.3.0
 Tested up to: 3.3.1
-Stable tag: trunk
+Stable tag: 1.0
 
 Replaces the author "Biographical Info" profile field with a TinyMCE visual editor. 
 
