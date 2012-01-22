@@ -34,5 +34,9 @@ Answer to foo bar dilemma.
 
 == Changelog ==
 
+= 1.1 =
+* Updates and bug fixes for older WordPress versions
+* Add plugin Banner to /assets/ folder for WordPress repository
+
 = 1.0 =
 * Initial public release to the WordPress plugin repository
