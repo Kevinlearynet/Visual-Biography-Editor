@@ -3,7 +3,6 @@ Contributors: kevinlearynet
 Tags: profile, biography, bio, rich, text, editor, wysiwyg, tinymce, wpeditor, visual, editor, biographic, info
 Requires at least: 3.3.0
 Tested up to: 3.3.1
-Stable tag: 1.0
 
 Replaces the author "Biographical Info" profile field with a TinyMCE visual editor. 
 
@@ -30,7 +29,8 @@ Answer to foo bar dilemma.
 
 == Screenshots ==
 
-1. screenshot.png
+1. The TinyMCE visual editor added to the *Users > Profile* page
+2. The formatted front end view for `the_author_description()` and `get_the_author_description()`
 
 == Changelog ==
 

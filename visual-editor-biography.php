@@ -47,8 +47,8 @@ class KLVisualBiographyEditor {
 			add_action( 'admin_enqueue_scripts', array(&$this, 'load_javascript'), 10, 1 );
 		}
 		// Display a message if the requires aren't met
-		else if ( !function_exists('wp_editor') ) {
-			add_action('admin_notices', 'update_notice');
+		else {
+			add_action( 'admin_notices', array(&$this, 'update_notice') );
 		}
 	}
 	
