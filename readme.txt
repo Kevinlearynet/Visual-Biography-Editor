@@ -1,6 +1,6 @@
 === Visual Editor Biography ===
 Contributors: kevinlearynet
-Tags: profile, biography, bio, rich, text, editor, wysiwyg, tinymce, wpeditor, visual, editor, biographic, info
+Tags: profile, biography, bio, rich, text, editor, wysiwyg, tinymce, wpeditor, visual, editor, biographic, info, description, profile biography, profile description, rich text, TinyMCE, user, user profile, users
 Requires at least: 3.3.0
 Tested up to: 3.3.1
 Stable tag: trunk
