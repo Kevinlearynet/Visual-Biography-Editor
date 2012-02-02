@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Visual Biography Editor
-Version: 1.0
+Version: 1.2
 Plugin URI: http://www.kevinleary.net/
 Description: Replace the "Biographical Info" profile field with a TinyMCE visual, rich text editor. Requires WordPress 3.3 or higher.
 Author: Kevin Leary
@@ -94,7 +94,7 @@ class KLVisualBiographyEditor {
 	 * @uses plugin_dir_path() http://codex.wordpress.org/Function_Reference/plugin_dir_path
 	 */
 	public function load_javascript( $hook ) {
-		if ( $hook == 'profile.php' ) {
+		if ( $hook == 'profile.php' || $hook == 'user-edit.php' ) {
 			wp_enqueue_script(
 				'visual-editor-biography', 
 				plugins_url('js/visual-editor-biography.js', __FILE__), 

@@ -3,7 +3,7 @@ Contributors: kevinlearynet
 Tags: profile, biography, bio, rich, text, editor, wysiwyg, tinymce, wpeditor, visual, editor, biographic, info
 Requires at least: 3.3.0
 Tested up to: 3.3.1
-Stable tag: 1.1
+Stable tag: 1.2
 
 Replaces the author "Biographical Info" profile field with a TinyMCE visual editor. 
 
@@ -24,6 +24,9 @@ Please note that this plugins modifies the output of `the_author_description()` 
 2. The formatted front end view for `the_author_description()` and `get_the_author_description()`
 
 == Changelog ==
+
+= 1.2 =
+* Fix issue with JS loading on user-edit.php; when administrators edit other people's bio's
 
 = 1.1 =
 * Updates and bug fixes for older WordPress versions
