@@ -13,6 +13,11 @@ Replaces the *Biographical Info* profile field with the WordPress visual editor,
 
 Please note that this plugins modifies the output of `the_author_description()` and `get_the_author_description()`, apply the same filters used to format content in the main editor.
 
+Multisite Compatibility
+---------------------
+
+The *Visual Editor Biography* plugin is compatibly with WordPress Multisite, just use the [Network Activate](http://codex.wordpress.org/Create_A_Network#WordPress_Plugins) feature to enable a visual editor on every site. If you only want a visual editor for a specific site then activate the plugin for that site only.
+
 == Installation ==
 
 1. Install easily with the WordPress plugin control panel or manually download the plugin and upload the folder `visual-editor-biography` to the `/wp-content/plugins/` directory 
