@@ -11,7 +11,7 @@ Replaces the author "Biographical Info" profile field with a TinyMCE visual edit
 
 Replaces the *Biographical Info* profile field with the WordPress visual editor, TinyMCE, allowing you to editor an author's biography using rich text.
 
-Please note that this plugins modifies the output of `the_author_description()` and `get_the_author_description()`, apply the same filters used to format content in the main editor.
+Please note that this plugins modifies the output of `get_the_author_meta('description')` and `the_author_meta('description')`, apply the same filters used to format content in the main editor.
 
 = Multisite Compatibility =
 
@@ -25,7 +25,7 @@ The *Visual Editor Biography* plugin is compatibly with WordPress Multisite, jus
 == Screenshots ==
 
 1. The TinyMCE visual editor added to the *Users > Profile* page
-2. The formatted front end view for `the_author_description()` and `get_the_author_description()`
+2. The formatted front end view for `get_the_author_meta('description')` and `the_author_meta('description')`
 
 == Changelog ==
 
