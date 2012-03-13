@@ -31,6 +31,7 @@ The *Visual Editor Biography* plugin is compatibly with WordPress Multisite, jus
 
 = 1.3 =
 * Restrict the rich text editing profile switch to contributor level users or higher for security
+* Add current_user_can() restrictions for added security throughout plugin
 
 = 1.2 =
 * Fix issue with JS loading on user-edit.php; when administrators edit other people's bio's
