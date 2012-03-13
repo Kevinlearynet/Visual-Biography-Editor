@@ -43,13 +43,13 @@ class KLVisualBiographyEditor {
 				
 				// Don't sanitize the data for display in a textarea
 				add_action( 'admin_init', array(&$this, 'save_filters') );
-				
-				// Add content filters to the output of the description
-				add_filter( 'get_the_author_description', array(&$this, 'display_filters') );
-				
+
 				// Load required JS
 				add_action( 'admin_enqueue_scripts', array(&$this, 'load_javascript'), 10, 1 );
 			}
+			
+			// Add content filters to the output of the description
+			add_filter( 'get_the_author_description', array(&$this, 'display_filters') );
 		}
 		// Display a message if the requires aren't met
 		else {
