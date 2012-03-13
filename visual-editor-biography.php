@@ -33,19 +33,16 @@ class KLVisualBiographyEditor {
 	public function __construct() {
 		// Add a visual editor if the current user is an Author role or above and WordPress is v3.3+
 		if ( function_exists('wp_editor') ) {
-			
 
+			// Add the WP_Editor
+			add_action( 'show_user_profile', array(&$this, 'visual_editor') );
+			add_action( 'edit_user_profile', array(&$this, 'visual_editor') );
 			
-				// Add the WP_Editor
-				add_action( 'show_user_profile', array(&$this, 'visual_editor') );
-				add_action( 'edit_user_profile', array(&$this, 'visual_editor') );
-				
-				// Don't sanitize the data for display in a textarea
-				add_action( 'admin_init', array(&$this, 'save_filters') );
+			// Don't sanitize the data for display in a textarea
+			add_action( 'admin_init', array(&$this, 'save_filters') );
 
-				// Load required JS
-				add_action( 'admin_enqueue_scripts', array(&$this, 'load_javascript'), 10, 1 );
-			
+			// Load required JS
+			add_action( 'admin_enqueue_scripts', array(&$this, 'load_javascript'), 10, 1 );
 			
 			// Add content filters to the output of the description
 			add_filter( 'get_the_author_description', array(&$this, 'display_filters') );
@@ -60,9 +57,16 @@ class KLVisualBiographyEditor {
 	 * Friendly notice if WP is out of date
 	 */
 	public function update_notice() {
-		echo '<div class="updated">
-		<p>The <strong>' . $this->name . '</strong> plugin requires WordPress 3.3 or higher. Update WordPress or <a href="' . get_admin_url(null, 'plugins.php') . '">de-activate the plugin</a>.</p>
-		</div>';
+	
+		// Notification is for administrators only
+		if ( !current_user_can('administrator') )
+			return;
+		
+		?>
+		<div class="updated">
+			<p>The <strong><?php echo $this->name; ?></strong> plugin requires WordPress 3.3 or higher. Update WordPress or <a href="<?php echo get_admin_url(null, 'plugins.php'); ?>">de-activate the plugin</a>.</p>
+		</div>
+		<?php
 	}
 	
 	
@@ -75,6 +79,10 @@ class KLVisualBiographyEditor {
 	 * @param $user An object with details about the current logged in user
 	 */
 	public function visual_editor( $user ) {
+		
+		// Contributor level user or higher required
+		if ( !current_user_can('contributor') )
+			return;
 		?>
 		<table class="form-table">
 			<tr>
@@ -98,6 +106,11 @@ class KLVisualBiographyEditor {
 	 * @uses plugin_dir_path() http://codex.wordpress.org/Function_Reference/plugin_dir_path
 	 */
 	public function load_javascript( $hook ) {
+		
+		// Contributor level user or higher required
+		if ( !current_user_can('contributor') )
+			return;
+			
 		if ( $hook == 'profile.php' || $hook == 'user-edit.php' ) {
 			wp_enqueue_script(
 				'visual-editor-biography', 
@@ -113,6 +126,11 @@ class KLVisualBiographyEditor {
 	 * Remove textarea filters from description field
 	 */
 	public function save_filters() {
+		
+		// Contributor level user or higher required
+		if ( !current_user_can('contributor') )
+			return;
+			
 		remove_all_filters('pre_user_description');
 	}
 	
@@ -120,6 +138,11 @@ class KLVisualBiographyEditor {
 	 * Add content filtering to the author description meta field
 	 */
 	public function display_filters( $value ) {
+		
+		// Contributor level user or higher required
+		if ( !current_user_can('contributor') )
+			return;
+		
 		return apply_filters('the_content', $value);
 	}
 }
