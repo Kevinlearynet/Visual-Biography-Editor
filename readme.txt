@@ -20,7 +20,7 @@ The *Visual Editor Biography* plugin is compatibly with WordPress Multisite, jus
 == Installation ==
 
 1. Install easily with the WordPress plugin control panel or manually download the plugin and upload the folder `visual-editor-biography` to the `/wp-content/plugins/` directory 
-1. Activate the plugin through the 'Plugins' menu in WordPress
+2. Activate the plugin through the 'Plugins' menu in WordPress
 
 == Screenshots ==
 
