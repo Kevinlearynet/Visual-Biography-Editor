@@ -34,8 +34,7 @@ class KLVisualBiographyEditor {
 		// Add a visual editor if the current user is an Author role or above and WordPress is v3.3+
 		if ( function_exists('wp_editor') ) {
 			
-			// Restrict this capability to contributor level users or higher for security
-			if ( current_user_can('contributor') ) {
+
 			
 				// Add the WP_Editor
 				add_action( 'show_user_profile', array(&$this, 'visual_editor') );
@@ -46,7 +45,7 @@ class KLVisualBiographyEditor {
 
 				// Load required JS
 				add_action( 'admin_enqueue_scripts', array(&$this, 'load_javascript'), 10, 1 );
-			}
+			
 			
 			// Add content filters to the output of the description
 			add_filter( 'get_the_author_description', array(&$this, 'display_filters') );
