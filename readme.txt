@@ -29,6 +29,10 @@ The *Visual Editor Biography* plugin is compatibly with WordPress Multisite, jus
 
 == Changelog ==
 
+= 1.4 =
+* Check for 'edit_posts' capability instead of 'contributor' for accurate role checks
+* Remove 'the_content' filters from get_the_author_description() function and instead add filters individually to avoid future conflicts with other plugins: `wptexturize()`, `wpautop()` and `convert_chars()`. Thanks to [Matt Wiebe](http://somadesign.ca/) for making this great suggestion.
+
 = 1.3 =
 * Restrict the rich text editing profile switch to contributor level users or higher for security
 * Add current_user_can() restrictions for added security throughout plugin

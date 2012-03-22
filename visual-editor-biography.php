@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Visual Biography Editor
-Version: 1.3
+Version: 1.4
 Plugin URI: http://www.kevinleary.net/
 Description: Replace the "Biographical Info" profile field with a TinyMCE visual, rich text editor. Requires WordPress 3.3 or higher.
 Author: Kevin Leary
@@ -35,21 +35,23 @@ class KLVisualBiographyEditor {
 		if ( function_exists('wp_editor') ) {
 
 			// Add the WP_Editor
-			add_action( 'show_user_profile', array(&$this, 'visual_editor') );
-			add_action( 'edit_user_profile', array(&$this, 'visual_editor') );
+			add_action( 'show_user_profile', array($this, 'visual_editor') );
+			add_action( 'edit_user_profile', array($this, 'visual_editor') );
 			
 			// Don't sanitize the data for display in a textarea
-			add_action( 'admin_init', array(&$this, 'save_filters') );
+			add_action( 'admin_init', array($this, 'save_filters') );
 
 			// Load required JS
-			add_action( 'admin_enqueue_scripts', array(&$this, 'load_javascript'), 10, 1 );
+			add_action( 'admin_enqueue_scripts', array($this, 'load_javascript'), 10, 1 );
 			
 			// Add content filters to the output of the description
-			add_filter( 'get_the_author_description', array(&$this, 'display_filters') );
+			add_filter( 'get_the_author_description', 'wptexturize' );
+			add_filter( 'get_the_author_description', 'convert_chars' );
+			add_filter( 'get_the_author_description', 'wpautop' );
 		}
 		// Display a message if the requires aren't met
 		else {
-			add_action( 'admin_notices', array(&$this, 'update_notice') );
+			add_action( 'admin_notices', array($this, 'update_notice') );
 		}
 	}
 	
@@ -81,7 +83,7 @@ class KLVisualBiographyEditor {
 	public function visual_editor( $user ) {
 		
 		// Contributor level user or higher required
-		if ( !current_user_can('contributor') )
+		if ( !current_user_can('edit_posts') )
 			return;
 		?>
 		<table class="form-table">
@@ -108,9 +110,10 @@ class KLVisualBiographyEditor {
 	public function load_javascript( $hook ) {
 		
 		// Contributor level user or higher required
-		if ( !current_user_can('contributor') )
+		if ( !current_user_can('edit_posts') )
 			return;
-			
+		
+		// Load JavaScript only on the profile and user edit pages 
 		if ( $hook == 'profile.php' || $hook == 'user-edit.php' ) {
 			wp_enqueue_script(
 				'visual-editor-biography', 
@@ -128,22 +131,10 @@ class KLVisualBiographyEditor {
 	public function save_filters() {
 		
 		// Contributor level user or higher required
-		if ( !current_user_can('contributor') )
+		if ( !current_user_can('edit_posts') )
 			return;
 			
 		remove_all_filters('pre_user_description');
-	}
-	
-	/**
-	 * Add content filtering to the author description meta field
-	 */
-	public function display_filters( $value ) {
-		
-		// Contributor level user or higher required
-		if ( !current_user_can('contributor') )
-			return;
-		
-		return apply_filters('the_content', $value);
 	}
 }
 
